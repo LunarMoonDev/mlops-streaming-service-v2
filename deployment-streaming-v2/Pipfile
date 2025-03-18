@@ -1,0 +1,22 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+numpy = "==2.0.2"
+mlflow = "==2.17.1"
+boto3 = "==1.35.49"
+scikit-learn = "==1.5.2"
+pandas = "==2.2.3"
+toolz = "*"
+pydantic = "*"
+strictyaml = "*"
+fsspec = "*"
+s3fs = "*"
+
+[dev-packages]
+pytest = "*"
+
+[requires]
+python_version = "3.9"

@@ -1,0 +1,13 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "kinesis:PutRecord",
+        "kinesis:PutRecords"
+      ],
+      "Resource": "arn:aws:kinesis:<region>:<account-id>:stream/<your-stream-name>"
+    }
+  ]
+}
