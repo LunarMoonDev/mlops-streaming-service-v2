@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  stream:
+    build:
+      context: .
+      dockerfile: docker/streaming.dockerfile
+    environment:
+      - PREDICTIONS_STREAM_NAME=ride_predictions
+      - RUN_ID=6ed4058916204c8497e440e1e39826f2
+      - TEST_RUN=True
+      - AWS_ENDPOINT_URL=http://localstack:4566
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_DEFAULT_OUTPUT=json
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+    ports:
+      - "8080:8080"
+    networks:
+      - app-networks
+
+networks:
+  app-networks:
+    name: app-networks
+    external: true
