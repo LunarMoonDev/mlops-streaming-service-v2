@@ -17,6 +17,7 @@ s3fs = "*"
 
 [dev-packages]
 pytest = "*"
+deepdiff = "*"
 
 [requires]
 python_version = "3.9"
