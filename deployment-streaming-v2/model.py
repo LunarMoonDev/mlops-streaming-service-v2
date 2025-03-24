@@ -2,6 +2,7 @@ import boto3
 import pandas as pd
 
 from utils.model_util import base64_decode, load_model
+from utils.kinesis_util import create_kinesis_client
 from kinesis_stream import KinesisCallback
 
 class ModelService:
@@ -58,7 +59,7 @@ def init(prediction_stream_name: str, run_id: str, test_run:bool):
 
     callbacks = []
     if not test_run:
-        kinesis_client = boto3.client('kinesis')
+        kinesis_client = create_kinesis_client()
         kinesis_callback = KinesisCallback(
             kinesis_client,
             prediction_stream_name
