@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  stream-integ-kinesis-test:
+    image: ${LOCAL_IMAGE_NAME:-test-image}
+    environment:
+      - PREDICTION_STREAM_NAME=output_streams
+      - KINESIS_ENDPOINT_URL=http://kinesis:4566
+      - RUN_ID=IntegrationTestRunID
+      - MODEL_LOCATION=/app/model
+      - AWS_DEFAULT_REGION=us-east-1
+      - AWS_ACCESS_KEY_ID=test
+      - AWS_SECRET_ACCESS_KEY=test
+    volumes:
+      - "./model:/app/model"
+    ports:
+      - "8080:8080"
+    networks:
+      - integration-kinesis-networks
+
+  kinesis:
+    image: localstack/localstack
+    ports:
+      - "4566:4566"
+    environment: 
+      - SERVICES=kinesis
+    networks:
+      - integration-kinesis-networks
+
+networks:
+  integration-kinesis-networks:
+    name: integration-kinesis-networks
+    external: false
