@@ -23,7 +23,7 @@ expected_response = {
     'predictions': [
         {
             'model': 'ride_duration_prediction_model',
-            'version': 'Test1234',
+            'version': 'IntegrationTestRunID',
             'prediction': {
                 'ride_duration': 22.1,
                 'ride_id': 256,
@@ -37,4 +37,3 @@ logging.info(f'diff: {diff}')
 
 assert 'type_changes' not in diff, 'assertion fail, different types detected. Please check diff'
 assert 'values_changed' not in diff, 'assertion fail, different values detected. Please check diff'
-    
