@@ -18,6 +18,9 @@ s3fs = "*"
 [dev-packages]
 pytest = "*"
 deepdiff = "*"
+pylint = "==v3.3.6"
+black = "*"
+isort = "*"
 
 [requires]
 python_version = "3.9"
