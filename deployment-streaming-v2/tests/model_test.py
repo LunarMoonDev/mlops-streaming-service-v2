@@ -10,7 +10,7 @@ def __read_text(file):
     test_dir = Path(__file__).parent
 
     with open(test_dir / f'data/{file}', 'rt', encoding='utf-8') as f_in:
-        return f_in(file).strip()
+        return f_in.read().strip()
 
 
 def test_prepare_features():

@@ -21,6 +21,7 @@ deepdiff = "*"
 pylint = "==v3.3.6"
 black = "*"
 isort = "*"
+pre-commit = "*"
 
 [requires]
 python_version = "3.9"

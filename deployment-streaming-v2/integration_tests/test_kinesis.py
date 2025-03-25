@@ -1,6 +1,6 @@
+import os
 import json
 import logging
-import os
 
 import boto3
 from deepdiff import DeepDiff

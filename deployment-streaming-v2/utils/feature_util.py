@@ -1,9 +1,9 @@
 import functools
 
-from sklearn.feature_extraction import DictVectorizer
+from toolz import compose
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import FunctionTransformer
-from toolz import compose
+from sklearn.feature_extraction import DictVectorizer
 
 
 def convert_to_dict(df):

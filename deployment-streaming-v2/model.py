@@ -1,8 +1,8 @@
 import pandas as pd
 
 from kinesis_stream import KinesisCallback
+from utils.model_util import load_model, base64_decode
 from utils.kinesis_util import create_kinesis_client
-from utils.model_util import base64_decode, load_model
 
 
 class ModelService:

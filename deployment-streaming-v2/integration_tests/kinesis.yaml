@@ -22,7 +22,7 @@ services:
     image: localstack/localstack
     ports:
       - "4566:4566"
-    environment: 
+    environment:
       - SERVICES=kinesis
     networks:
       - integration-kinesis-networks
