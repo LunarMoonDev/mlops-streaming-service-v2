@@ -11,11 +11,11 @@ logging.basicConfig(
     datefmt='%Y-%m-%d %H:%M:%S',
 )
 
-with open('event.json', 'rt', encoding='utf-8') as f_in:
+with open('data/event.json', 'rt', encoding='utf-8') as f_in:
     event = json.load(f_in)
 
 URL = 'http://localhost:8080/2015-03-31/functions/function/invocations'
-actual_response = requests.post(url=URL, json=event, timeout=(20, 30)).json()
+actual_response = requests.post(url=URL, json=event, timeout=(20, 50)).json()
 logging.debug('actual response: %s', actual_response)
 logging.debug('json data: %s', json.dumps(actual_response, indent=2))
 

@@ -13,10 +13,14 @@ NC='\033[0m'
 # prepare docker image
 echo -e "${YELLOW}$(date '+%Y-%m-%d %H:%M:%S') - === Block 1: Preparing Image ===${NC}"
 
-LOCAL_TAG=$(date +"%Y-%m-%d-%H-%M")
-export LOCAL_IMAGE_NAME="stream-model-kinesis-duration:${LOCAL_TAG}"
-echo -e "${YELLOW}$(date '+%Y-%m-%d %H:%M:%S') - LOCAL_IMAGE_NAME is not set, building a new image with tag ${LOCAL_IMAGE_NAMES}${NC}"
-docker build -f ../docker/streaming.dockerfile -t ${LOCAL_IMAGE_NAME} ..
+if [ "${LOCAL_IMAGE_NAME}" == "" ]; then
+    LOCAL_TAG=$(date +"%Y-%m-%d-%H-%M")
+    export LOCAL_IMAGE_NAME="stream-model-kinesis-duration:${LOCAL_TAG}"
+    echo -e "${YELLOW}$(date '+%Y-%m-%d %H:%M:%S') - LOCAL_IMAGE_NAME is not set, building a new image with tag ${LOCAL_IMAGE_NAME}${NC}"
+    docker build -f ../docker/streaming.dockerfile -t ${LOCAL_IMAGE_NAME} ..
+else
+    echo -e "${YELLOW}$(date '+%Y-%m-%d %H:%M:%S') - LOCAL_IMAGE_NAME is already set, using tag ${LOCAL_IMAGE_NAME}${NC}"
+fi
 
 echo -e "\n\n"
 
@@ -55,9 +59,8 @@ echo -e "\n\n"
 # cleanup
 if [ ${ERROR_CODE} != 0 ]; then
     echo -e "${YELLOW}$(date '+%Y-%m-%d %H:%M:%S') - === Block 6: Cleaning up resources ===${NC}"
-    echo -e "HI"
-    docker compose -f local.yaml logs
-    docker compose -f local.yaml down
+    docker compose -f kinesis.yaml logs
+    docker compose -f kinesis.yaml down
     exit ${ERROR_CODE}
 fi
 
@@ -69,7 +72,6 @@ echo -e "\n\n"
 # cleanup
 if [ ${ERROR_CODE} != 0 ]; then
     echo -e "${YELLOW}$(date '+%Y-%m-%d %H:%M:%S') - === Block 6: Cleaning up resources ===${NC}"
-    echo -e "HI"
     docker compose -f kinesis.yaml logs
     docker compose -f kinesis.yaml down
     exit ${ERROR_CODE}
