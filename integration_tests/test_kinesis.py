@@ -12,7 +12,6 @@ logging.basicConfig(
     datefmt='%Y-%m-%d %H:%M:%S',
 )
 
-kinesis_endpoint = os.getenv('KINESIS_ENDPOINT_URL', 'http://localhost:4566')
 kinesis_client = boto3.client('kinesis')
 
 stream_name = os.getenv('PREDICTION_STREAM_NAME', 'output_streams')

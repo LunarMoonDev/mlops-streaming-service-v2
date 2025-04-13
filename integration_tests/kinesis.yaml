@@ -4,10 +4,8 @@ services:
   stream-integ-kinesis-test:
     image: ${LOCAL_IMAGE_NAME:-test-image}
     environment:
-      - PREDICTION_STREAM_NAME=output_streams
-      - KINESIS_ENDPOINT_URL=http://kinesis:4566
-      - RUN_ID=IntegrationTestRunID
       - MODEL_LOCATION=/app/model
+      - AWS_ENDPOINT_URL=http://localstack:4566
       - AWS_DEFAULT_REGION=us-east-1
       - AWS_ACCESS_KEY_ID=test
       - AWS_SECRET_ACCESS_KEY=test
@@ -18,12 +16,12 @@ services:
     networks:
       - integration-kinesis-networks
 
-  kinesis:
+  localstack:
     image: localstack/localstack
     ports:
       - "4566:4566"
     environment:
-      - SERVICES=kinesis
+      - SERVICES=kinesis,ssm,events
     networks:
       - integration-kinesis-networks
 
