@@ -27,4 +27,4 @@ However, here's how you run the notebook via docker-compose
 - run `./run.sh` and it will output the logs for integration testing
 
 - you can also run `make --help` command to see options that are include in the Makefile (or read Makefile on possible commands)
-    - it should contain list of commands prepared for this project (make sure make is installed in windows!)
+  - it should contain list of commands prepared for this project (make sure make is installed in windows!)
