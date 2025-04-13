@@ -28,3 +28,7 @@ However, here's how you run the notebook via docker-compose
 
 - you can also run `make --help` command to see options that are include in the Makefile (or read Makefile on possible commands)
   - it should contain list of commands prepared for this project (make sure make is installed in windows!)
+
+#### Notes
+- Infrastructure directory will hold terraform files as per my study. I won't be able to guarantee if the Terraform works because I believe ECR is not available in localstack
+- base will contain terraform for the base infra while main will focus on lambda side
