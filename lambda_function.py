@@ -1,12 +1,8 @@
-import os
-
 import model
+from config import ParamConfig
 
-PREDICTION_STREAM_NAME = os.getenv('PREDICTION_STREAM_NAME', 'ride_predictions')
-RUN_ID = os.getenv('RUN_ID')
-TEST_RUN = os.getenv('TEST_RUN', 'False') == 'True'
-
-model_service = model.init(PREDICTION_STREAM_NAME, RUN_ID, TEST_RUN)
+config = ParamConfig()
+model_service = model.init(config.prediction_stream_name, config.run_id, config.debug)
 
 
 def lambda_handler(event, context):

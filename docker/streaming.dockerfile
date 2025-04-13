@@ -9,6 +9,6 @@ COPY utils/ ./utils/
 
 RUN pipenv install --system --deploy
 
-COPY [ "lambda_function.py", "kinesis_stream.py", "model.py", "./" ]
+COPY [ "lambda_function.py", "kinesis_stream.py", "model.py", "config.py", "./" ]
 
 CMD [ "lambda_function.lambda_handler" ]
